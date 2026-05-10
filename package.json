@@ -1,0 +1,9 @@
+{
+  "name": "minimax-api-us-quickstart",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node --check examples/node-models.js"
+  }
+}
