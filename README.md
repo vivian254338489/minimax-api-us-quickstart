@@ -1,16 +1,19 @@
-# MiniMax API US Quickstart
+# MiniMax API Quickstart for Open WebUI, OpenCode, and OpenAI-Compatible SDKs
 
-Short developer tutorial for making a first MiniMax API test call from the US through an OpenAI-compatible endpoint.
+One practical page for developers who want to test MiniMax from the US through OpenAI-compatible tooling.
 
-This guide is intentionally small: create an API key, run one `curl` request, then move to a Node.js or Python call when the endpoint is working.
+Use it when you want to:
 
-## Start Here
+- connect MiniMax-style routes to Open WebUI or an OpenAI-compatible SDK
+- sanity-check a base URL with `/v1/models`
+- run a minimal chat request before wiring a real app
+- avoid committing API keys while testing
+
+## Quick Start
 
 Create an account and open the API key page:
 
-[Start with $5 free trial credit](https://www.tken.shop/register?next=%2Fconsole%2Ftoken&utm_source=github&utm_medium=owned_repo&utm_campaign=minimax_us_quickstart_202605&utm_content=readme_cta)
-
-## 1. Create an API Key
+[Start with 5 USD free trial credit](https://www.tken.shop/register?next=%2Fconsole%2Ftoken&utm_source=github&utm_medium=owned_repo&utm_campaign=minimax_openwebui_opencode_quickstart_202605&utm_content=readme_cta)
 
 1. Register or sign in.
 2. Open the API Key page.
@@ -19,7 +22,7 @@ Create an account and open the API key page:
 
 Keep the key private. Do not commit it to GitHub, paste it into issues, or share it in screenshots.
 
-## 2. Test the Endpoint
+## 1. Test the Base URL
 
 Set your key as an environment variable:
 
@@ -36,7 +39,7 @@ curl https://www.tken.shop/v1/models \
 
 If this returns model metadata, authentication and network access are working.
 
-## 3. Minimal Chat Request
+## 2. Minimal Chat Request
 
 Use the OpenAI-compatible Chat Completions shape:
 
@@ -53,6 +56,32 @@ curl https://www.tken.shop/v1/chat/completions \
 ```
 
 Model availability can change by account and route. If a model name fails, check the model list returned by `/v1/models` and use an available route.
+
+## 3. Open WebUI Setup
+
+Open WebUI supports OpenAI-compatible provider connections. Use these values as a starting point:
+
+```text
+API base URL: https://www.tken.shop/v1
+API key: your TKEN API key
+Model: choose one returned by /v1/models
+```
+
+Smoke test first with `/v1/models`; then add the base URL in Open WebUI and select an available model.
+
+## 4. OpenCode Setup
+
+MiniMax's official docs describe OpenCode configuration for MiniMax coding models. If your workflow uses OpenCode directly, follow the OpenCode auth flow and enter your MiniMax key when prompted.
+
+For gateway-style testing through this quickstart, keep the same validation order:
+
+1. Confirm the API key works with `/v1/models`.
+2. Confirm a chat completion works.
+3. Only then configure your coding tool.
+
+## 5. Hailuo / Video API Note
+
+MiniMax's video generation APIs are asynchronous: create a task, poll task status, then download the file when ready. Do not debug video generation before your key and base URL pass the simple model-list or chat test.
 
 ## Node.js Example
 
@@ -104,4 +133,10 @@ For a real integration test, track these steps:
 
 ## Notes
 
-This repository is a practical quickstart for developers evaluating an OpenAI-compatible MiniMax route from the US. It is not an official MiniMax repository.
+This repository is a practical quickstart for developers evaluating MiniMax-related API routes and OpenAI-compatible tooling from the US. It is not an official MiniMax repository.
+
+## Sources
+
+- MiniMax OpenCode docs: https://platform.minimax.io/docs/coding-plan/opencode
+- MiniMax video generation docs: https://platform.minimax.io/docs/api-reference/video-generation-intro
+- Open WebUI OpenAI-compatible provider docs: https://docs.openwebui.com/getting-started/quick-start/connect-a-provider/starting-with-openai-compatible
